@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('date');
             $table->string('accessories');
             $table->decimal('amount', 10, 2);
-            $table->string('marketer');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

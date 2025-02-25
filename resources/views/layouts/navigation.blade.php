@@ -16,7 +16,7 @@
                         {{ __('Admin Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('tasks.getall')" :active="request()->routeIs('tasks.getall')">
+                    <x-nav-link :href="route('task.getall')" :active="request()->routeIs('task.getall')">
                         {{ __('Task') }}
                     </x-nav-link>
 
@@ -87,7 +87,7 @@
             <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                 {{ __('Admin Dashboard') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('tasks.getall')" :active="request()->routeIs('tasks.getall')">
+            <x-responsive-nav-link :href="route('task.getall')" :active="request()->routeIs('task.getall')">
                 {{ __('Task') }}
             </x-responsive-nav-link>
             {{-- <x-responsive-nav-link :href="route('admin.deposit')" :active="request()->routeIs('admin.deposit')">

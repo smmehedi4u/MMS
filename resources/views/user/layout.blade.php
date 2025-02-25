@@ -29,25 +29,21 @@
     <header class="text-gray-600 body-font bg-gray-100 shadow-md">
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
             <!-- Logo -->
-            <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <a class="flex title-font font-medium items-center text-gray-900  md:mb-0">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
                     stroke-linejoin="round" stroke-width="2"
                     class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                 </svg>
-                <span class="ml-3 text-xl font-semibold">Tempousing</span>
+                <a href="{{ route('user.dashboard') }}"><span class="ml-3 text-xl font-semibold">Tempousing</span></a>
             </a>
 
             <!-- Navigation -->
             <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center space-x-6">
-                <a href="{{ route('admin.dashboard') }}" class="bg-gray-300 w-30 h-10 rounded-md hover:text-gray-900 transition inline-flex items-center justify-center border border-gray-400 {{ request()->routeIs('admin.dashboard') ? 'bg-green-500 text-white' : ' ' }}">Dashboard</a>
-                <a href="{{ route('task.getall') }}" class="bg-gray-300 w-20 h-10 rounded-md hover:text-gray-900 transition inline-flex items-center justify-center border border-gray-400 {{ request()->routeIs('task.getall') ? 'bg-green-500 text-white' : ' ' }}">
-                    Task
-                </a>
-                <a href="{{ route('deposit.getall') }}" class="bg-gray-300 w-20 h-10 rounded-md hover:text-gray-900 transition inline-flex items-center justify-center border border-gray-400 {{ request()->routeIs('deposit.getall') ? 'bg-green-500 text-white' : ' ' }}">Deposit</a>
-                <a href="{{ route('meal.getall') }}" class="bg-gray-300 w-20 h-10 rounded-md hover:text-gray-900 transition inline-flex items-center justify-center border border-gray-400 {{ request()->routeIs('meal.getall') ? 'bg-green-500 text-white' : ' ' }}">Meal</a>
-                <a href="{{ route('other.getall') }}" class="bg-gray-300 w-20 h-10 rounded-md hover:text-gray-900 transition inline-flex items-center justify-center border border-gray-400 {{ request()->routeIs('other.getall') ? 'bg-green-500 text-white' : ' ' }}">Others</a>
-            </nav>
+                <a href="{{ route('user.dashboard') }}" class="bg-gray-300 w-40 h-10 rounded-md hover:text-gray-900 transition inline-flex items-center justify-center border border-gray-400 {{ request()->routeIs('user.dashboard') ? 'bg-green-500 text-white' : ' ' }}">Dashboard</a>
+                <a href="{{ route('market.getall') }}" class="bg-gray-300 w-20 h-10 rounded-md hover:text-gray-900 transition inline-flex items-center justify-center border border-gray-400 {{ request()->routeIs('market.getall') ? 'bg-green-500 text-white' : ' ' }}">
+                    Market
+                </a></nav>
 
             <!-- User Dropdown -->
             <div class="relative hidden sm:flex sm:items-center sm:ms-6" x-data="{ open: false }">

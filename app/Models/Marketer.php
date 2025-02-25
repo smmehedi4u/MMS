@@ -9,5 +9,10 @@ class Marketer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date', 'accessories', 'amount', 'marketer'];
+    protected $fillable = ['date', 'accessories', 'amount', 'user_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

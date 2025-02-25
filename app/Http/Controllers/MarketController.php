@@ -2,26 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
 use App\Models\User;
+use App\Models\Marketer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class TaskController extends Controller
+class MarketController extends Controller
 {
 
-    /**
-     * Store a new task via AJAX.
-     */
     public function store(Request $request)
     {
         // Validate the request
-        $taskData = [
-            'title' => $request->title,
-            'description' => $request->description,
-            'deadline' => $request->deadline,
-            'user_id' => $request->user_id,
+        $markData = [
+            'date' => $request->date,
+            'accessories' => $request->accessories,
+            'amount' => $request->amount,
+            'user_id' => Auth::id(),
         ];
-        Task::create($taskData);
+        Marketer::create($markData);
         return response()->json([
             'status' => 200,
         ]);
@@ -29,26 +27,20 @@ class TaskController extends Controller
 
     public function getall()
     {
-        $tasks = Task::latest()->with('user')->get();
+        $market = Marketer::latest()->with('user')->get();
         $users = User::all();
-
         if (request()->ajax()) {
             return response()->json([
                 'status' => 200,
-                'tasks' => $tasks
+                'market' => $market
             ]);
         }
-
-        return view('admin.task', compact('tasks', 'users'));
+        return view('user.market', compact('market','users'));
     }
 
-
-    /**
-     * Fetch a task for editing via AJAX.
-     */
     public function edit($id)
     {
-        $task = Task::find($id);
+        $task = Marketer::find($id);
         if ($task) {
             return response()->json([
                 'status' => 200,
@@ -57,7 +49,7 @@ class TaskController extends Controller
         } else {
             return response()->json([
                 'status' => 404,
-                'message' => 'Task not found'
+                'message' => 'Marketer not found'
             ]);
         }
     }
@@ -67,21 +59,21 @@ class TaskController extends Controller
      */
     public function update(Request $request)
     {
-        $task = Task::find($request->id);
+        $task = Marketer::find($request->id);
         if ($task) {
-            $task->title = $request->title;
-            $task->description = $request->description;
-            $task->deadline = $request->deadline;
-            $task->user_id = $request->user_id;
+            $task->date = $request->date;
+            $task->accessories = $request->accessories;
+            $task->amount = $request->amount;
+            $task->user_id = Auth::id();
             $task->save();
             return response()->json([
                 'status' => 200,
-                'message' => 'Task updated successfully'
+                'message' => 'Market updated successfully'
             ]);
         } else {
             return response()->json([
                 'status' => 404,
-                'message' => 'Task not found'
+                'message' => 'Market not found'
             ]);
         }
     }
@@ -91,11 +83,12 @@ class TaskController extends Controller
      */
     public function delete(Request $request)
     {
-        $task = Task::find($request->id);
+        $task = Marketer::find($request->id);
         if ($task && $task->delete()) {
-            return response()->json(['status' => 200, 'message' => 'Task deleted successfully.']);
+            return response()->json(['status' => 200, 'message' => 'Market deleted successfully.']);
         } else {
-            return response()->json(['status' => 400, 'message' => 'Failed to delete task.']);
+            return response()->json(['status' => 400, 'message' => 'Failed to delete Market.']);
         }
     }
+
 }

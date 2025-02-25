@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('others', function (Blueprint $table) {
             $table->id();
-            $table->integer('wifi');
-            $table->integer('gass');
-            $table->integer('rent');
-            $table->integer('electricity');
-            $table->integer('services');
-            $table->integer('others');
+            $table->string('name');
+            $table->integer('expense');
+            $table->date('date');
             $table->timestamps();
         });
     }

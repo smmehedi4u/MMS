@@ -9,6 +9,6 @@ class Others extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['wifi', 'gass', 'rent', 'electricity', 'services', 'others'];
+    protected $fillable = ['name', 'expense', 'date'];
 
 }

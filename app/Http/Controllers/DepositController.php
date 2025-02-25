@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Deposit;
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
 
 class DepositController extends Controller
 {
@@ -81,5 +81,5 @@ class DepositController extends Controller
             return response()->json(['status' => 400, 'message' => 'Failed to delete deposit.']);
         }
     }
-}
+} 
 
