@@ -27,7 +27,7 @@
                 <div class="card text-white bg-danger mb-3">
                     <div class="card-header">Market Expenses</div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ number_format($othersExpenses, 2) }} BDT</h5>
+                        <h5 class="card-title">{{ number_format($marketExpenses, 2) }} BDT</h5>
                     </div>
                 </div>
             </div>

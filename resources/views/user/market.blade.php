@@ -7,9 +7,9 @@
                 <div class="card mt-4 shadow">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4>Market List</h4>
-                        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        {{-- <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i class="bi bi-database-add"></i> ADD
-                        </button>
+                        </button> --}}
                     </div>
                     <div class="card-body">
                         <table id="myTable" class="display">
@@ -20,7 +20,7 @@
                                     <th>Accessories</th>
                                     <th>Amount</th>
                                     <th>Marketer</th>
-                                    <th>Actions</th>
+                                    {{-- <th>Actions</th> --}}
                                 </tr>
                             </thead>
                         </table>
@@ -28,110 +28,11 @@
                 </div>
             </div>
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add Market</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="market-form" method="post">
-                                <div class="row">
-                                    <div class="col-lg">
-                                        <label>Date</label>
-                                        <input type="date" name="date" id="date" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg">
-                                        <label>Accessories</label>
-                                        <input type="text" name="accessories" id="accessories" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg">
-                                        <label>Expense</label>
-                                        <input type="integer" name="amount" id="amount" class="form-control">
-                                    </div>
-                                </div>
-                                {{-- <div class="row">
-                                    <div class="col-lg">
-                                        <label>Member</label>
-                                        <select name="user_id" class="form-control" required>
-                                            <option value="">Select Member</option>
-                                            @foreach ($users as $user)
-                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div> --}}
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" form="market-form">Save</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
         </div>
     </div>
 
-
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="editModalLabel">Edit Market</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="edit-form" method="post">
-                                <input type="hidden" id="edit-id" name="id">
-                                <div class="row">
-                                    <div class="col-lg">
-                                        <label>Date</label>
-                                        <input type="date" name="date" id="edit-date" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg">
-                                        <label>Accessories</label>
-                                        <input type="text" name="accessories" id="edit-accessories" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg">
-                                        <label>Expense</label>
-                                        <input type="integer" name="amount" id="edit-amount" class="form-control">
-                                    </div>
-                                </div>
-                                {{-- <div class="row">
-                                    <div class="col-lg">
-                                        <label>Member</label>
-                                        <select name="user_id" class="form-control" id="edit-user_id" required>
-                                            <option value="">Select Member</option>
-                                            @foreach ($users as $user)
-                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div> --}}
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" form="edit-form">Edit</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
 @endsection
 
 @push('javascript')
@@ -164,116 +65,18 @@
                             return data ? data : "N/A";
                         }
                     },
-                    {
-                        "data": null,
-                        "render": function (data, type, row) {
-                            return '<a href="#" class="btn btn-sm btn-success edit-btn" data-id="'+data.id+'" data-date="'+data.date+'"data-accessories="'+data.accessories+'" data-amount="'+data.amount+'" data-user_id="'+data.user_id+'">Edit</a> ' +
-                            '<a href="#" class="btn btn-sm btn-danger delete-btn" data-id="'+data.id+'">Delete</a>';
-                        }
-                    }
+                    // {
+                    //     "data": null,
+                    //     "render": function (data, type, row) {
+                    //         return '<a href="#" class="btn btn-sm btn-success edit-btn" data-id="'+data.id+'" data-date="'+data.date+'"data-accessories="'+data.accessories+'" data-amount="'+data.amount+'" data-user_id="'+data.user_id+'"></a> ' +
+                    //         '<a href="#" class="btn btn-sm btn-danger delete-btn" data-id="'+data.id+'"></a>';
+                    //     }
+                    // }
                 ]
             });
 
-            $('#myTable tbody').on('click', '.edit-btn', function () {
-                var id = $(this).data('id');
-                var date = $(this).data('date');
-                var accessories = $(this).data('accessories');
-                var amount = $(this).data('amount');
-                var user_id = $(this).data('user_id');
-
-                $('#edit-id').val(id);
-                $('#edit-date').val(date);
-                $('#edit-accessories').val(accessories);
-                $('#edit-amount').val(amount);
-                $('#edit-user_id').val(user_id);
-                $('#editModal').modal('show');
-            });
-
-
-            $('#market-form').submit(function (e) {
-                e.preventDefault();
-                const marketdata = new FormData(this);
-
-                $.ajax({
-                    url: '{{ route('market.store') }}',
-                    method: 'post',
-                    data: marketdata,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    dataType: 'json',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-                        if (response.status == 200) {
-                            alert("Saved successfully");
-                            $('#market-form')[0].reset();
-                            $('#exampleModal').modal('hide');
-                            $('#myTable').DataTable().ajax.reload();
-                        }
-                    }
-                });
-            });
 
         });
-
-
-        $('#edit-form').submit(function (e) {
-                e.preventDefault();
-                const marketdata = new FormData(this);
-
-                $.ajax({
-                    url: '{{ route('market.update') }}',
-                    method: 'POST',
-                    data: marketdata,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    dataType: 'json',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
-                        if (response.status === 200) {
-                            alert(response.message);
-                            $('#edit-form')[0].reset();
-                            $('#editModal').modal('hide');
-                            $('#myTable').DataTable().ajax.reload();
-                        } else {
-                            alert(response.message);
-                        }
-                    }
-                });
-            });
-
-            $(document).on('click', '.delete-btn', function() {
-                var id = $(this).data('id');
-
-                if (confirm('Are you sure you want to delete this market?')) {
-                    $.ajax({
-                        url: '{{ route('market.delete') }}',
-                        type: 'DELETE',
-                        data: {id: id},
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function(response) {
-                            console.log(response); // Debugging: log the response
-                            if (response.status === 200) {
-                                alert(response.message); // Show success message
-                                $('#myTable').DataTable().ajax.reload(); // Reload the table data
-                            } else {
-                                alert(response.message); // Show error message
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(xhr); // Debugging: log the error
-                            alert('Error: ' + error); // Show generic error message
-                        }
-                    });
-                }
-            });
 
     </script>
 @endpush

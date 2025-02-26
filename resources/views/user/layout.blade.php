@@ -19,6 +19,11 @@
     {{-- alpine js --}}
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
     @vite('resources/css/app.css')
 
 
@@ -27,12 +32,12 @@
 <body>
     {{-- HEADER PART --}}
     <header class="text-gray-600 body-font bg-gray-100 shadow-md">
-        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <div class="container mx-auto flex flex-wrap p-5 md:p-4 flex-col md:flex-row items-center">
             <!-- Logo -->
             <a class="flex title-font font-medium items-center text-gray-900  md:mb-0">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-                    stroke-linejoin="round" stroke-width="2"
-                    class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                    viewBox="0 0 24 24">
                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                 </svg>
                 <a href="{{ route('user.dashboard') }}"><span class="ml-3 text-xl font-semibold">Tempousing</span></a>
@@ -40,10 +45,17 @@
 
             <!-- Navigation -->
             <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center space-x-6">
-                <a href="{{ route('user.dashboard') }}" class="bg-gray-300 w-40 h-10 rounded-md hover:text-gray-900 transition inline-flex items-center justify-center border border-gray-400 {{ request()->routeIs('user.dashboard') ? 'bg-green-500 text-white' : ' ' }}">Dashboard</a>
-                <a href="{{ route('market.getall') }}" class="bg-gray-300 w-20 h-10 rounded-md hover:text-gray-900 transition inline-flex items-center justify-center border border-gray-400 {{ request()->routeIs('market.getall') ? 'bg-green-500 text-white' : ' ' }}">
+                <a href="{{ route('user.dashboard') }}"
+                    class="bg-gray-300 w-40 h-10 rounded-md hover:text-gray-900 transition inline-flex items-center justify-center border border-gray-400 {{ request()->routeIs('user.dashboard') ? 'bg-green-500 text-white' : ' ' }}">Dashboard</a>
+                <a href="{{ route('market.getall') }}"
+                    class="bg-gray-300 w-20 h-10 rounded-md hover:text-gray-900 transition inline-flex items-center justify-center border border-gray-400 {{ request()->routeIs('market.getall') ? 'bg-green-500 text-white' : ' ' }}">
                     Market
-                </a></nav>
+                </a>
+                <a href="{{ route('profile.getall') }}"
+                    class="bg-gray-300 w-20 h-10 rounded-md hover:text-gray-900 transition inline-flex items-center justify-center border border-gray-400 {{ request()->routeIs('profile.getall') ? 'bg-green-500 text-white' : ' ' }}">
+                    Profile
+                </a>
+            </nav>
 
             <!-- User Dropdown -->
             <div class="relative hidden sm:flex sm:items-center sm:ms-6" x-data="{ open: false }">
@@ -51,8 +63,8 @@
                 <button @click="open = !open"
                     class="flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-200 focus:outline-none transition">
                     <span class="font-medium">{{ Auth::user()->name }}</span>
-                    <svg class="ml-2 h-5 w-5 transition-transform duration-200"
-                        :class="{ 'rotate-180': open }" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <svg class="ml-2 h-5 w-5 transition-transform duration-200" :class="{ 'rotate-180': open }"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                         <path fill-rule="evenodd"
                             d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                             clip-rule="evenodd" />
@@ -61,18 +73,17 @@
 
                 <!-- Dropdown Content -->
                 <div x-show="open" @click.away="open = false" x-transition
-                    class="absolute right-0 mt-30 w-48 bg-white rounded-md shadow-md z-50 border border-gray-200" x-cloak>
-                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">
-                        Profile
-                    </a>
+                    class="absolute right-0 mt-5 w-40 bg-white rounded-md shadow-md z-50 border border-gray-200 text-sm"
+                    x-cloak>
+
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit"
-                            class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
+                        <button type="submit" class="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100">
                             Log Out
                         </button>
                     </form>
                 </div>
+
             </div>
         </div>
     </header>
