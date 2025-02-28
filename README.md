@@ -1,11 +1,9 @@
 
 # Mess Management System
 
-
 The Mess Management System is a web-based application designed to streamline and automate the management of a mess or shared bachelor house. This system helps track expenses, meal counts, member contributions and overall financial records efficiently.
 
-
-
+![MMS](https://github.com/user-attachments/assets/ffe89678-6a63-4243-9c1e-3e66362dcade)
 
 ## Features
 
